@@ -1,5 +1,5 @@
 #アカウント内のIAM USERの情報を取得し、ユーザーごとに所属しているGroupを取得する
-export AWS_PROFILE="robothome-dev"
+export AWS_PROFILE=""
 
 users_list=$(aws iam list-users --query "Users[].UserName" --output text)
 {
