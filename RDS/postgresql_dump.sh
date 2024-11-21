@@ -23,6 +23,5 @@ psql -h $endpoint -U $root_user -c "SELECT * FROM pg_roles;" > ${backup_path}/${
 
 unset PGPASSWORD
 
-aws rds describe-db-parameters --db-parameter-group-name ${parameter_group} > ${backup_path}/${rds_name}_${parameter_group}_${enegine_version}_${date}.csv
-
-
+#パラメータグループの情報をCSVで取得
+aws rds describe-db-parameters --db-parameter-group-name ${parameter_group} --region ap-northeast-1 > ${backup_path}/${rds_name}_${parameter_group}_${enegine_version}_${date}.csv
