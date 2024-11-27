@@ -1,36 +1,46 @@
-#imageをpullして、tagをつけなおしてpushする
-export AWS_PROFILE="default"
+#!/bin/bash
 
-region="ap-northeast-1"
-account_id="251469776981"
-image_tag="v1"
-repo_name="myapp"
+#アーカイブ元アカウント情報
+ACCOUNT_A_ID="396609837941"
+REGION_A="us-east-1"
+REPO_LIST_A_FILE="./dev_classic_rh_repo_image_list.txt"
+SOURCE_PROFILE="robothome-dev"
 
+#アーカイブ先アカウント情報
+ACCOUNT_B_ID="879562317725"
+REGION_B="ap-northeast-1"
+REPO_LIST_B_FILE="./log_archive_repo_list.txt"
+DEST_PROFILE="log-archive-ecr"
 
-aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
-# docker pull ${account_id}.dkr.ecr.${region}.amazonaws.com/${repo_name}:${image_tag}
-# docker tag hello-world:latest ${account_id}.dkr.ecr.${region}.amazonaws.com/${repo_name}:latest
-docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/${repo_name}:latest
+#アーカイブするイメージにつける日付
+TODAY=$(date +%Y%m%d)
 
+#アーカイブ元アカウントにログイン
+login_to_ecr_a() {
+  aws sso login --profile $SOURCE_PROFILE
+  aws ecr get-login-password --profile $SOURCE_PROFILE --region $REGION_A | docker login --username AWS --password-stdin $ACCOUNT_A_ID.dkr.ecr.$REGION_A.amazonaws.com
+}
 
-# aws ecr describe-images --repository-name myapp
-# {
-#     "imageDetails": [
-#         {
-#             "imageSizeInBytes": 133346056, 
-#             "imageDigest": "sha256:8401bb0035eedc2f101d96eabdf9ed37269f76f14daed080fe924d54d9772037", 
-#             "imageTags": [
-#                 "latest"
-#             ], 
-#             "registryId": "xxxxxxxxxxxx", 
-#             "repositoryName": "sample-app", 
-#             "imagePushedAt": xxxxxxxxxxxx.0
-#         }
-#     ]
-# }
+#アーカイブ先アカウントにログイン
+login_to_ecr_b() {
+  aws sso login --profile $DEST_PROFILE
+  aws ecr get-login-password --profile $DEST_PROFILE | docker login --username AWS --password-stdin $ACCOUNT_B_ID.dkr.ecr.$REGION_B.amazonaws.com
+}
 
-# ファイルから読み込む
-# どっかーログイン
-# ぷる
-# タグ付け替える
-# プッシュ
+paste -d, "$REPO_LIST_A_FILE" "$REPO_LIST_B_FILE" | while IFS=, read -r repo_a image_id repo_b
+do
+  login_to_ecr_a
+  #pullするイメージのURI
+  SOURCE_IMAGE_URI="${ACCOUNT_A_ID}.dkr.ecr.${REGION_A}.amazonaws.com/${repo_a}:${image_id}"
+  
+  # イメージをプル
+  docker pull $SOURCE_IMAGE_URI
+
+#アーカイブ先アカウントにpushできるようにイメージにタグ付け
+  DEST_IMAGE_URI="${ACCOUNT_B_ID}.dkr.ecr.${REGION_B}.amazonaws.com/${repo_b}:${TODAY}"
+  docker tag $SOURCE_IMAGE_URI $DEST_IMAGE_URI
+
+#アーカイブ先アカウントにイメージをプッシュ
+  login_to_ecr_b
+  docker push $DEST_IMAGE_URI
+done
