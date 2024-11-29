@@ -1,3 +1,2 @@
-corp-renewal,20180612-145811
-php_apache_base_image,latest
-schemaspy,20180419-02
+hoya-test,hello-world
+hoya-test2,hello-world2
