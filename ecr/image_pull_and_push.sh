@@ -1,3 +1,4 @@
+
 #imageをpullして、tagをつけなおしてpushする
 export AWS_PROFILE="default"
 
