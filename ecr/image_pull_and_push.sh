@@ -1,17 +1,16 @@
 #!/bin/bash
-#前提として .aws/config ファイルに各プロファイル情報を記載する必要がああります
 
 #アーカイブ元アカウント情報
-SRC_ACCOUNT_ID="396609837941"
-SRC_REGION="us-east-1"
-SRC_REPO_IMAGE_LIST_FILE="./dev_classic_rh_repo_image_list.txt"
-SOURCE_PROFILE="robothome-dev"
+SRC_ACCOUNT_ID=""
+SRC_REGION=""
+SRC_REPO_IMAGE_LIST_FILE=""
+SOURCE_PROFILE=""
 
 #アーカイブ先アカウント情報
-DEST_ACCOUNT_ID="879562317725"
-DEST_REGION="ap-northeast-1"
-DEST_REPO_LIST_FILE="./log_archive_repo_list.txt"
-DEST_PROFILE="log-archive-ecr"
+DEST_ACCOUNT_ID=""
+DEST_REGION=""
+DEST_REPO_LIST_FILE=""
+DEST_PROFILE=""
 
 #アーカイブするイメージタグにつける日付
 TODAY=$(date +%Y%m%d)
