@@ -1,14 +1,14 @@
 #!bin/bash
 date=$(date +%Y%m%d)
-rds_name="ivtz-stg-rds-01-cluster"
-password="S4#apcAf"
-root_user="root"
-endpoint="ivtz-stg-rds-01-cluster.cluster-ro-cfhbatrcqnw3.ap-northeast-1.rds.amazonaws.com"
-enegine_version="5.7.mysql_aurora.2.11.5"
-parameter_group="default.aurora-mysql5.7"
-databases_list="script/db_list_${rds_name}.txt"
-user_list="script/user_list_${rds_name}.txt"
-backup_path="stg-rds/${rds_name}"
+rds_name=""
+password=""
+root_user=""
+endpoint=""
+enegine_version=""
+parameter_group=""
+databases_list=""
+user_list=""
+backup_path=""
 
 #dumpファイルを取得
 while read -r db;do
