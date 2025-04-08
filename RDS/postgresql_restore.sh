@@ -1,14 +1,14 @@
 #!bin/bash
-endpoint="127.0.0.1"
-root_user="root"
-port="15432"
-date="20241119"
-rds_name="tateru-dev-post-02"
-enegine_version="PostgreSQL_12.19"
-db_list="db_list.txt"
-export PGPASSWORD='root'
-user_list="user_list.txt"
-restore_list="restore_list.txt"
+endpoint=""
+root_user=""
+port=""
+date=""
+rds_name=""
+enegine_version=""
+db_list=""
+export PGPASSWORD=''
+user_list=""
+restore_list=""
 
 #データベースの作成
 while read -r db;do

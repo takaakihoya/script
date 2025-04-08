@@ -1,3 +1,0 @@
-sg-2695526d is attached　redis
-sg-19aa4250 is attached　ECS
-sg-f11bf2b8 is attached　デフォルト

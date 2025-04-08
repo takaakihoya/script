@@ -1,8 +1,8 @@
-export AWS_PROFILE="robothome-dev"
-AP_REGION="ap-northeast-1"
-AP_SG_LIST="ap1_sg_list.txt"
-US_REGION="us-east-1"
-US_SG_LIST="us1_sg_list.txt"
+export AWS_PROFILE=""
+AP_REGION=""
+AP_SG_LIST=""
+US_REGION=""
+US_SG_LIST=""
 
 #ap-northeast-1のENIにアタッチされていないSGを出力
 AP_OUTPUT_FILE="ap1_sg_results.txt"

@@ -4,20 +4,23 @@
 export AWS_PROFILE="default"
 =======
 #!/bin/bash
+<<<<<<< HEAD
 #前提として .aws/config ファイルに各プロファイル情報を記載する必要がああります
 >>>>>>> a8de672781a45d586b4bda41b6da7d476a3237cf
+=======
+>>>>>>> e64c2461e80fd44f2c5aa83f570a6095078d384c
 
 #アーカイブ元アカウント情報
-SRC_ACCOUNT_ID="396609837941"
-SRC_REGION="us-east-1"
-SRC_REPO_IMAGE_LIST_FILE="./dev_classic_rh_repo_image_list.txt"
-SOURCE_PROFILE="robothome-dev"
+SRC_ACCOUNT_ID=""
+SRC_REGION=""
+SRC_REPO_IMAGE_LIST_FILE=""
+SOURCE_PROFILE=""
 
 #アーカイブ先アカウント情報
-DEST_ACCOUNT_ID="879562317725"
-DEST_REGION="ap-northeast-1"
-DEST_REPO_LIST_FILE="./log_archive_repo_list.txt"
-DEST_PROFILE="log-archive-ecr"
+DEST_ACCOUNT_ID=""
+DEST_REGION=""
+DEST_REPO_LIST_FILE=""
+DEST_PROFILE=""
 
 #アーカイブするイメージタグにつける日付
 TODAY=$(date +%Y%m%d)

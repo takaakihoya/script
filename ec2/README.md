@@ -11,4 +11,8 @@ localPortNumber: ローカルで使用するポート番号、最終的にはこ
 portNumber: ポートフォワーディング先のポート番号、今回だとDBのポート番号
 host: ポートフォワーディング先のホスト、今回だとDBのホスト名
 
+修正後に以下コマンドでEC2にSSMでコネクションを貼ります。
+`bash ssm.sh`
+コネクション確立後に、`localPortNumber`と、MySQL Workbench等を使用してDBにアクセスします。
+
 

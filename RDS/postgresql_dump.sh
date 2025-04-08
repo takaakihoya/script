@@ -2,14 +2,14 @@
 
 # 変数設定
 date=$(date +%Y%m%d)
-rds_name="tateru-dev-post-02"
-root_user="postgres"
-endpoint="tateru-dev-post-02.cfhbatrcqnw3.ap-northeast-1.rds.amazonaws.com"
-enegine_version="PostgreSQL_12.19"
-parameter_group="default.postgres12-db-hg5ghroto5jpn2jwqiel4khuky-upgrade"
-databases_list="script/db_list_${rds_name}.txt"
-backup_path="dev-rds/${rds_name}"
-export PGPASSWORD='C4p.wVz*'
+rds_name=""
+root_user=""
+endpoint=""
+enegine_version=""
+parameter_group=""
+databases_list=""
+backup_path=""
+export PGPASSWORD=''
 
 # #dumpファイルを取得
 while read -r db;do
