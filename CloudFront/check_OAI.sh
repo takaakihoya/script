@@ -1,3 +1,4 @@
+#!/bin/bash
 #アカウント内のディストリビューションのOAIを確認し、jsonファイルに出力する
 export AWS_PROFILE=""
 

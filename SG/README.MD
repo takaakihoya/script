@@ -10,3 +10,5 @@ ENIにアタッチされていないSecurityGroupを洗い出します。
 2.スクリプト内の変数に`export AWS_PROFILE`の値を修正してください
 
 3.`bash sg_describe.sh`コマンドを実行
+
+4.各Security GroupがENIにアタッチされているか判断してくれます
